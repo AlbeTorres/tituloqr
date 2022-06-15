@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container{
+    height: 90%;
+}
+.listap {
+     height: 100%;
+}
+
+.buscarp{
+    height: 10%;
+}
+
+.wmax{
+    max-width: 350px;
+}
+
+.alerta{
+    right: 3rem;
+    position: absolute;
+    top: 1.2rem;
+    font-size: 1.1rem;
+    color: white;
+    padding: 0.3rem 1rem;
+}
+
+
+.error{
+   @apply bg-red-600 rounded-lg
+}
+
+.fine{
+    @apply bg-green-600 rounded-lg
+}
