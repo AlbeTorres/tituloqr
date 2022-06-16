@@ -10,8 +10,8 @@ const Participantes=()=> {
   //extraer participantes del estado inicial
   const participanteListContext = useContext(participantesContext);
   const {modificar} = participanteListContext;
-
-
+         console.log('test')
+ 
   return (
 
     <div className='grid grid-cols-3 w-full'>
