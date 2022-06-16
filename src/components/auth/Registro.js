@@ -20,9 +20,9 @@ const Registro = () => {
 
   useEffect(()=>{
 
-    // if (autenticado){
-    //   history('/home');
-    // }
+    if (autenticado){
+      history('/home');
+    }
 
     if(mensaje){
       mostrarAlerta(mensaje.msg, mensaje.categoria);
