@@ -4,6 +4,7 @@ import { REGISTRO_ERROR, REGISTRO_EXITOSO,
 export default (state, action)=>{
 
     switch(action.type){
+        case LOGIN_EXITOSO:
         case REGISTRO_EXITOSO:
             return({
                 ...state,
@@ -18,7 +19,7 @@ export default (state, action)=>{
                 token: null,
                 mensaje: action.payload
             });
-            case LOGIN_EXITOSO:
+            case OBTENER_USUARIO:
                 return({
                     ...state,
                     usuario:action.payload

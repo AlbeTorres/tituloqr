@@ -66,10 +66,10 @@ import tokenAuth from "../../config/tokenAuth";
              try {
 
                 const respuesta = await clienteAxios.get('api/auth');
-                console.log(respuesta);
+                
 
                 dispatch({
-                    type: LOGIN_EXITOSO,
+                    type: OBTENER_USUARIO,
                      payload: respuesta.data.usuario
                  })
                 
@@ -84,6 +84,38 @@ import tokenAuth from "../../config/tokenAuth";
         }
 
 
+        //Cuando el usuario inicia sesion
+        const iniciarSesion = async datos=>{
+
+            try {
+
+                const response = await clienteAxios.post('/api/auth', datos);
+                
+
+                localStorage.setItem('token', response.data.token);
+
+                dispatch({
+                    type: LOGIN_EXITOSO,
+
+                });
+
+                usuarioAutenticado();
+                
+            } catch (error) {
+                
+
+                const alerta={
+                    msg: error.response.data.msg,
+                    categoria: 'error'
+                }
+
+                dispatch({
+                    type: REGISTRO_ERROR,
+                    payload: alerta
+                })
+            }
+        }
+
         return (
             <authContext.Provider
             value={{
@@ -92,6 +124,7 @@ import tokenAuth from "../../config/tokenAuth";
                 usuario: state.usuario,
                 mensaje: state.mensaje,
                 registrarUsuario,
+                iniciarSesion,
 
             }}
             >{props.children}
