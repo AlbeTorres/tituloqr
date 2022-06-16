@@ -4,7 +4,7 @@ const tokenAuth = token =>{
     console.log('works')
 
     if(token){
-        clienteAxios.defaults.headers.common['x-auth-token']= token;
+        clienteAxios.defaults.headers.common['x-auth-token'] = token;
     }else{
         delete clienteAxios.defaults.headers.common['x-auth-token'];
     }

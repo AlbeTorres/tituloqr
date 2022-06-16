@@ -20,9 +20,9 @@ const Registro = () => {
 
   useEffect(()=>{
 
-    if (autenticado){
-      history('/home');
-    }
+    // if (autenticado){
+    //   history('/home');
+    // }
 
     if(mensaje){
       mostrarAlerta(mensaje.msg, mensaje.categoria);
@@ -58,7 +58,7 @@ const onChangeCheckBox=e=>{
 
   const onSubmit=e =>{
     e.preventDefault()
-    console.log(usuario);
+    
 
     //validar que no esté vacío
     if(nombre.trim() ==='' || password.trim() ==='' ||  passwordVer.trim()==='' || email.trim()==='' ){

@@ -25,13 +25,15 @@ import tokenAuth from "../../config/tokenAuth";
             try {
 
                 const response = await clienteAxios.post('api/usuarios/', datos);
-                console.log(response);
+
+                localStorage.setItem('token', response.data.token)
 
                 dispatch({
                     type: REGISTRO_EXITOSO,
                     payload: response.data,
                 })
 
+                
                 usuarioAutenticado();
                 
             } catch (error) {
@@ -48,6 +50,7 @@ import tokenAuth from "../../config/tokenAuth";
                 
             }
 
+
         }
 
         //Retorna el usuario autenticado
@@ -58,25 +61,25 @@ import tokenAuth from "../../config/tokenAuth";
             if(token){
                 tokenAuth(token);
             }
-            console.log(clienteAxios.defaults.headers.common['x-auth-token'])
+
             
-            try {
+             try {
 
                 const respuesta = await clienteAxios.get('api/auth');
                 console.log(respuesta);
 
                 dispatch({
                     type: LOGIN_EXITOSO,
-                    payload: respuesta.data.usuario
-                })
+                     payload: respuesta.data.usuario
+                 })
                 
-            } catch (error) {
-                console.log(error);
-                dispatch({
-                    type: LOGIN_ERROR,
-                })
+             } catch (error) {
+                 console.log(error);
+                 dispatch({
+                     type: LOGIN_ERROR,
+                 })
                 
-            }
+             }
 
         }
 
