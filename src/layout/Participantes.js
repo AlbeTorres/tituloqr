@@ -3,7 +3,7 @@ import BuscarP from '../components/participantes/BuscarP';
 import FormularioP from '../components/participantes/FormularioP';
 import Listap from '../components/participantes/Listap';
 import participantesContext from '../context/participantes/participantesContext';
-import authContext from '../context/auth/authContext';
+
 
 
 const Participantes=()=> {
@@ -12,13 +12,6 @@ const Participantes=()=> {
   const participanteListContext = useContext(participantesContext);
   const {modificar} = participanteListContext;
 
-  //obtener usuario que esta logueado
-  const AuthContext = useContext(authContext);
-  const {usuarioAutenticado} = AuthContext;
-
-  useEffect(()=>{
-    usuarioAutenticado();
-  },[])
  
   return (
 
