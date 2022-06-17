@@ -1,14 +1,14 @@
 import React,{useContext, useEffect} from 'react';
+import authContext from '../context/auth/authContext';
 import Usuario from '../components/usuario/usuario';
 import { Link } from 'react-router-dom';
-import authContext from '../context/auth/authContext';
 
 
 const Aside = () => {
 
      //obtener usuario que esta logueado
   const AuthContext = useContext(authContext);
-  const {usuarioAutenticado,usuario} = AuthContext;
+  const {usuarioAutenticado,usuario,cerrarSesion} = AuthContext;
 
   useEffect(()=>{
     usuarioAutenticado();
@@ -21,7 +21,7 @@ const Aside = () => {
         <Link to={'/home'} className='pl-2   text-white block m-5' >Participantes</Link>
         <Link to={'/trabajos'} className=' pl-2   text-white block m-5' >Trabajos</Link>
         <Link to={'/qr'} className=' pl-2   text-white block m-5' >GenerarQR</Link>
-        <Usuario usuario={usuario}/>
+        <Usuario usuario={usuario} cerrarSesion={ cerrarSesion}/>
     </aside>
   )
 }

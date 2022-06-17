@@ -116,6 +116,13 @@ import tokenAuth from "../../config/tokenAuth";
             }
         }
 
+        //Cerrar Sesion
+        const cerrarSesion=()=>{
+            dispatch({
+                type: CERRAR_SESION
+            })
+        }
+
         return (
             <authContext.Provider
             value={{
@@ -126,6 +133,7 @@ import tokenAuth from "../../config/tokenAuth";
                 registrarUsuario,
                 iniciarSesion,
                 usuarioAutenticado,
+                cerrarSesion,
 
             }}
             >{props.children}
