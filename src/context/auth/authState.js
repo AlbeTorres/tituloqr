@@ -125,6 +125,7 @@ import tokenAuth from "../../config/tokenAuth";
                 mensaje: state.mensaje,
                 registrarUsuario,
                 iniciarSesion,
+                usuarioAutenticado,
 
             }}
             >{props.children}

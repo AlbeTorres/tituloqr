@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Routes, Route,Link} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Participantes from './layout/Participantes';
 import ParticipantesState from './context/participantes/participantesState';
 import './index.css'
@@ -10,8 +10,17 @@ import Login from './components/auth/Login';
 import Registro from './components/auth/Registro';
 import AlertaState from './context/alertas/alertasSate';
 import AuthState from './context/auth/authState';
+import tokenAuth from './config/tokenAuth';
+import Aside from './layout/Aside';
 
 
+
+//Revisar si tenmos un token
+const token= localStorage.getItem('token');
+
+if(token){
+  tokenAuth(token);
+}
 
 function App() {
 
@@ -23,12 +32,7 @@ function App() {
           <TrabajosState>
             <AlertaState>
                 <Router>
-                    <aside className='bg-blue-800 h-screen  w-fit'>
-                        <h1 className='p-7 text-4xl text-white font-bold'>TítulosQR</h1>
-                        <Link to={'/home'} className='pl-2   text-white block m-5' >Participantes</Link>
-                        <Link to={'/trabajos'} className=' pl-2   text-white block m-5' >Trabajos</Link>
-                        <Link to={'/qr'} className=' pl-2   text-white block m-5' >GenerarQR</Link>
-                    </aside>
+                    <Aside/>
 
                     <Routes>
                         <Route exact path= '/' element={<Login/>}/>
