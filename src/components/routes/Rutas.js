@@ -21,8 +21,8 @@ const Rutas = () => {
           <Route exact path='/registro' element={<Registro/>} />
           {/* Rutas Privadas */}
           <Route exact path= '/home' element={ autenticado  ? <Participantes/> : <Navigate to='/'/>  }/>
-          <Route exact path= '/trabajos' element={<Trabajos/>}/>
-          <Route exact path= '/qr' element={<QRview/>}/>
+          <Route exact path= '/trabajos' element={ autenticado  ? <Trabajos/> : <Navigate to='/'/>}/>
+          <Route exact path= '/qr' element={autenticado  ? <QRview/> : <Navigate to='/'/>}/>
           <Route exact path= '/diploma:id' element={<Diploma/>}/>
           {/* Rutas Privadas */}
       </Routes>
