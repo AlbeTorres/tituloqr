@@ -12,18 +12,18 @@ import Participantes from '../../layout/Participantes';
 const Rutas = () => {
     
     const AuthContext = useContext(authContext);
-    const { autenticado}= AuthContext;
+    const { autenticado, cargando}= AuthContext;
 
   return (
    
         <Routes>
           <Route exact path= '/' element={<Login/>}/>
           <Route exact path='/registro' element={<Registro/>} />
-          {/* Rutas Privadas */}
-          <Route exact path= '/home' element={ autenticado  ? <Participantes/> : <Navigate to='/'/>  }/>
-          <Route exact path= '/trabajos' element={ autenticado  ? <Trabajos/> : <Navigate to='/'/>}/>
-          <Route exact path= '/qr' element={autenticado  ? <QRview/> : <Navigate to='/'/>}/>
           <Route exact path= '/diploma:id' element={<Diploma/>}/>
+          {/* Rutas Privadas */}
+          <Route exact path= '/home' element={ !autenticado && !cargando  ? <Navigate to='/'/> : <Participantes/>  }/>
+          <Route exact path= '/trabajos' element={ !autenticado && !cargando   ? <Navigate to='/'/> : <Trabajos/>}/>
+          <Route exact path= '/qr' element={!autenticado && !cargando  ? <Navigate to='/'/> : <QRview/>}/>
           {/* Rutas Privadas */}
       </Routes>
     

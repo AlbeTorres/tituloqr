@@ -11,11 +11,7 @@ const Aside = () => {
   const {usuarioAutenticado,usuario,cerrarSesion} = AuthContext;
 
   useEffect(()=>{
-    const token=localStorage.getItem('token')
-    if(token){
       usuarioAutenticado();
-
-    }
   },[])
  
 

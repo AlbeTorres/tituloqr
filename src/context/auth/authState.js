@@ -13,7 +13,8 @@ import tokenAuth from "../../config/tokenAuth";
             token: localStorage.getItem('token'),
             autenticado: null,
             usuario: null,
-            mensaje: null
+            mensaje: null,
+            cargando: true,
 
         }
 
@@ -130,6 +131,7 @@ import tokenAuth from "../../config/tokenAuth";
                 autenticado: state.autenticado,
                 usuario: state.usuario,
                 mensaje: state.mensaje,
+                cargando: state.cargando,
                 registrarUsuario,
                 iniciarSesion,
                 usuarioAutenticado,
