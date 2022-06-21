@@ -38,7 +38,7 @@ const Listap = () => {
       {
         (participantesFilter.length !==0) 
         ?
-        participantesFilter.map(participante=>(<ParticipantesCard key={participante.id} participante={participante} />)) 
+        participantesFilter.map(participante=>(<ParticipantesCard key={participante._id} participante={participante} />)) 
         :
         <h2>No hay Participantes</h2>
       }

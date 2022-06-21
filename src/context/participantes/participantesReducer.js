@@ -14,7 +14,7 @@ export default (state, action)=>{
             return{
                 ...state,
                 modificar:true,
-                participante: state.participantes.filter(participante => participante.id == action.payload)
+                participante: state.participantes.filter(participante => participante._id == action.payload)
             };
         case CERRAR_MODIFICAR:
             return{
@@ -30,7 +30,7 @@ export default (state, action)=>{
         case ELIMINAR_PARTICIPANTE:
             return{
                 ...state,
-                participantes: state.participantes.filter(participante=> participante.id!==action.payload),
+                participantes: state.participantes.filter(participante=> participante._id!==action.payload),
             };
         case AÑADIR_PARTICIPANTE:
             return{
@@ -38,12 +38,10 @@ export default (state, action)=>{
                 participantes: [...state.participantes,action.payload]
             };
         case MODIFICAR_PARTICIPANTE:
-            console.log(action.payload)
             return{
                 ...state,
                 participantes: state.participantes.map( participante=> {
-                    console.log(participante);
-                    return participante.id == action.payload.id ? (participante = action.payload): participante;
+                    return participante._id == action.payload._id ? (participante = action.payload): participante;
                 })
             }
         default:

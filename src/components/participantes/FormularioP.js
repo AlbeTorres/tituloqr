@@ -17,7 +17,7 @@ const FormularioP=({añadir})=> {
  //Si se usa el componente como modificar colocar en el estado los valores anteriores del participante
   if(!añadir){
 
-      idM = participanteM[0].id;
+      idM = participanteM[0]._id;
       nombreM = participanteM[0].nombre ;
       categoriaM = participanteM[0].categoria;
       institucionM = participanteM[0].institucion;
@@ -71,9 +71,10 @@ const FormularioP=({añadir})=> {
 
       if(!añadir){
         modificarParticipante(idM, participante)
-        console.log(participante)
+        
 
       }else{
+        console.log(participante)
         añadirParticipante(participante);
 
       }

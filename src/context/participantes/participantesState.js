@@ -1,10 +1,9 @@
 import React,{useReducer} from "react";
 import participantesContext from './participantesContext';
 import participantesReducer from "./participantesReducer";
-import { v4 as uuidv4 } from "uuid";
+import clienteAxios from '../../config/axios';
 
 import { OBTENER_PARTICIPANTES, ABRIR_MODIFICAR, CERRAR_MODIFICAR,TERMINO_BUSQUEDA, 
-    OBTENER_PARTICIPANTES_BY_ID,
     ELIMINAR_PARTICIPANTE,
     MODIFICAR_PARTICIPANTE,
     AÑADIR_PARTICIPANTE} from "../../types";
@@ -16,27 +15,7 @@ import { OBTENER_PARTICIPANTES, ABRIR_MODIFICAR, CERRAR_MODIFICAR,TERMINO_BUSQUE
 
 const ParticipantesState = props =>{
 
-    const participantes = [
-        {   
-            id:1,
-            nombre:"Alberto Torres Reyes",
-            categoria: 'Ingeniero',
-            institucion: 'uci'
-        },
     
-        {   
-            id:2,
-            nombre:"Ricardo Benancio de la Cruz Reyes",
-            categoria: 'Estudiante',
-            institucion: 'uci'
-        },
-        {
-            id:3,
-            nombre:"Alberto Torres Reyes",
-            categoria: 'Ingeniero',
-            institucion: 'uci'
-        }
-    ]
 
 
     const initialState = {
@@ -54,11 +33,21 @@ const ParticipantesState = props =>{
     //serie de funciones para CRUD
 
     //Obtener participantes
-    const obtenerParticipantes = () =>{
+    const obtenerParticipantes = async () =>{
+           try {
+
+            const resolve = await clienteAxios.get('/api/participantes');
+            console.log(resolve);
+
             dispatch({
                 type:OBTENER_PARTICIPANTES,
-                payload: participantes 
+                payload: resolve.data.participantes 
                     }  );
+            
+           } catch (error) {
+            console.log(error);
+            
+           }
     }
 
     //Abrir modificar
@@ -88,33 +77,65 @@ const ParticipantesState = props =>{
     }
 
     //Eliminar Participante 
-    const eliminarParticipante=(id)=>{
-        dispatch({
-            type:ELIMINAR_PARTICIPANTE,
-            payload: id
-        });
+    const eliminarParticipante=async(id)=>{
+
+        try {
+            const resolve = await clienteAxios.delete(`/api/participantes/${id}`);
+            console.log(resolve);
+            dispatch({
+                type:ELIMINAR_PARTICIPANTE,
+                payload: id
+            });
+        
+            
+        } catch (error) {
+            console.log(error)
+            
+        }
+      
     }
 
     //Modificar participante
 
-    const modificarParticipante =(id, participante) =>{
+    const modificarParticipante = async(id, participante) =>{
 
-        participante.id = id
-        dispatch({
-            type: MODIFICAR_PARTICIPANTE,
-            payload: participante
-        });
+        try {
+            const resolve = await clienteAxios.patch(`/api/participantes/${id}`, participante);
+
+            dispatch({
+                type: MODIFICAR_PARTICIPANTE,
+                payload: resolve.data
+            });
+        
+            
+        } catch (error) {
+            console.log(error)
+            
+        }
+
+        
 
     }
 
     //Añadir participante
-    const añadirParticipante = participante =>{
-        participante.id = uuidv4();
+    const añadirParticipante = async participante =>{
+        
 
-        dispatch({
-            type: AÑADIR_PARTICIPANTE,
-            payload: participante
-        })
+        try {
+
+            const resolve = await clienteAxios.post('/api/participantes', participante);
+            console.log(resolve)
+
+            dispatch({
+                type: AÑADIR_PARTICIPANTE,
+                payload: resolve.data
+            })
+           
+        } catch (error) {
+            console.log(error);
+            
+        }
+     
     }
 
 

@@ -7,7 +7,7 @@ const ParticipantesCard = ({participante}) => {
   const participanteListContext = useContext(participantesContext);
   const {abrirModificar, eliminarParticipante} = participanteListContext;
 
-  const {id,nombre, categoria}= participante;
+  const {_id,nombre, categoria}= participante;
 
   const abrirModificarID =(id)=>{
     abrirModificar(id);
@@ -31,8 +31,8 @@ const ParticipantesCard = ({participante}) => {
             <p className='text-white text-sm'>{categoria}</p>
           </div>
           <div>
-            <button onClick={()=>abrirModificarID(id)} className='mr-2 px-2 text-white bg-green-700 rounded-sm shadow-md text-sm ' >Editar</button>
-            <button onClick={()=>eliminarParticipanteID(id)} className='mr-2 px-2 text-white bg-red-700 rounded-sm shadow-md text-sm'>Eliminar</button>
+            <button onClick={()=>abrirModificarID(_id)} className='mr-2 px-2 text-white bg-green-700 rounded-sm shadow-md text-sm ' >Editar</button>
+            <button onClick={()=>eliminarParticipanteID(_id)} className='mr-2 px-2 text-white bg-red-700 rounded-sm shadow-md text-sm'>Eliminar</button>
           </div>
         </div>
     </div>
