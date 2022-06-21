@@ -83,7 +83,7 @@ export default (state, action)=>{
             return{
                 ...state,
                 trabajos:state.trabajos.map(trabajo=>{
-                    return trabajo._id== action.payload.id ? (trabajo= action.payload): trabajo;
+                    return trabajo._id== action.payload._id ? (trabajo= action.payload): trabajo;
                 })
             }
 

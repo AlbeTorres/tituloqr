@@ -17,20 +17,6 @@ import clienteAxios from '../../config/axios'
 
 const TrabajosState = props =>{
 
-    const trabajos =[
-                    {
-                        _id:1,
-                        titulo: 'Abrir puerta',
-                        integrantes:[1,2,]
-
-                    },
-                    {
-                        _id:2,
-                        titulo: 'Romper puerta',
-                        integrantes:[1]
-
-                    },
-                    ]
 
     //Creando estado inicial
     const initialState={
@@ -124,33 +110,65 @@ const TrabajosState = props =>{
 
     //Obtener trabajos
 
-    const obtenerTrabajos=()=>{
+    const obtenerTrabajos=async()=>{
 
-        dispatch({
-            type:OBTENER_TRABAJOS,
-            payload: trabajos
+        try {
+            const resolve =  await clienteAxios.get('/api/trabajos');
+            console.log(resolve)
 
-        });
+            dispatch({
+                type:OBTENER_TRABAJOS,
+                payload: resolve.data.trabajos
+    
+            });
+
+        } catch (error) {
+            console.log(error)
+            
+        }
+
+      
     }
 
     //eliminar trabajos
 
-    const eliminarTrabajos=(id)=>{
-        dispatch({
-            type: ELIMINAR_TRABAJOS,
-            payload:id
+    const eliminarTrabajos=async(id)=>{
 
-        });
+        try {
+            await clienteAxios.delete(`/api/trabajos/${id}`);
+            
+            dispatch({
+                type: ELIMINAR_TRABAJOS,
+                payload:id
+    
+            });
+            
+        } catch (error) {
+            console.log(error)
+            
+        }
+      
 
     }
 
     //modificar Trabajo
-    const modificarTrabajo=(idM, trabajo)=>{
-        trabajo.id= idM;
-        dispatch({
-            type: MODIFICAR_TRABAJO,
-            payload:trabajo
-        })
+    const modificarTrabajo= async(id, trabajo)=>{
+        
+        try {
+
+            const resolve = await clienteAxios.patch(`/api/trabajos/${id}`,trabajo);
+            console.log(resolve)
+            dispatch({
+                type: MODIFICAR_TRABAJO,
+                payload:resolve.data
+            })
+            
+        } catch (error) {
+            console.log(error);
+            
+        }
+
+        
         
     }
     

@@ -15,7 +15,7 @@ function FormularioT({añadir}) {
      //Si se usa el componente como modificar colocar en el estado los valores anteriores del participante
     if(!añadir){
 
-    idM= trabajoM[0].id;
+    idM= trabajoM[0]._id;
     tituloM = trabajoM[0].titulo ;
 }
     integrantesM =trabajoM[0].integrantes;
