@@ -27,15 +27,15 @@ function SeleccParticipantes() {
     }
 
 
-    const listaIntegrantes = participantes.filter(participante=> trabajoM[0].integrantes.includes(participante.id));
-    const participantesAux = participantes.filter(participante=> !trabajoM[0].integrantes.includes(participante.id));
+    const listaIntegrantes = participantes.filter(participante=> trabajoM[0].integrantes.includes(participante._id));
+    const participantesAux = participantes.filter(participante=> !trabajoM[0].integrantes.includes(participante._id));
 
     return (
     <div className='relative grid grid-cols-2 min-h-full gap-x-3 '>
         <div className='relative '>
             <h1 className='p-4  text-4xl text-blue-800 font-bold'>Participantes</h1>
             <div className='absolute w-full h-72 bg-white overflow-y-scroll'>
-            {(participantesAux.length !==0) ? participantesAux.map(participante=>(<ParticipantesCardTrabajo participante={participante}/>)):<h1>No hay Participantes</h1>}
+            {(participantesAux.length !==0) ? participantesAux.map(participante=>(<ParticipantesCardTrabajo key={participante._id} participante={participante}/>)):<h1>No hay Participantes</h1>}
                 
 
             </div>
@@ -44,7 +44,7 @@ function SeleccParticipantes() {
         <div className='relative '>
             <h1 className='p-4 text-4xl text-blue-800 font-bold'>Integrantes</h1>
             <div className=' w-full h-72  bg-white overflow-y-scroll'>
-                {(listaIntegrantes.length !==0) ? listaIntegrantes.map(participante=>(<IntegrantesCard participante={participante}/>)):<h1>No hay integrantes</h1>}
+                {(listaIntegrantes.length !==0) ? listaIntegrantes.map(participante=>(<IntegrantesCard key={participante._id} participante={participante}/>)):<h1>No hay integrantes</h1>}
                 
             </div>
             <button className='bg-blue-800 text-white rounded-sm px-2 py-1 absolute right-6  bottom-2' onClick={cerrarSeleccionarVer} >Aceptar</button>

@@ -12,42 +12,24 @@ VACIAR_INTEGRANTES,
 } from "../../types";
 import trabajosContext from './trabajosContext';
 import {v4 as uuid4} from 'uuid';
+import clienteAxios from '../../config/axios'
 
 
 const TrabajosState = props =>{
 
     const trabajos =[
                     {
-                        id:1,
-                        nombre: 'Abrir puerta',
+                        _id:1,
+                        titulo: 'Abrir puerta',
                         integrantes:[1,2,]
 
                     },
                     {
-                        id:2,
-                        nombre: 'Romper puerta',
+                        _id:2,
+                        titulo: 'Romper puerta',
                         integrantes:[1]
 
                     },
-                    {
-                        id:3,
-                        nombre: 'Crear puerta',
-                        integrantes:[3]
-
-                    },
-                    {
-                        id:4,
-                        nombre: 'Abrir puerta',
-                        integrantes:[1,2]
-
-                    },
-                    {
-                        id:5,
-                        nombre: 'Abrir puerta',
-                        integrantes:[1,2]
-
-                    },
-
                     ]
 
     //Creando estado inicial
@@ -56,7 +38,7 @@ const TrabajosState = props =>{
         modificar:false,
         seleccionar:false,
         busquedaT:'',
-        trabajoM:[{id:'', nombre:'', integrantes:[]}],
+        trabajoM:[{id:'', titulo:'', integrantes:[]}],
         integrantes:[],
         
 
@@ -173,12 +155,21 @@ const TrabajosState = props =>{
     }
     
     //añadir Trabajo
-    const añadirTrabajo=(trabajo)=>{
-        trabajo.id = uuid4()
-        dispatch({
-            type: AÑADIR_TRABAJO,
-            payload: trabajo
-        })
+    const añadirTrabajo= async(trabajo)=>{
+        
+        try {
+            
+            const resolve = await clienteAxios.post('/api/trabajos', trabajo);
+            console.log(resolve)
+            dispatch({
+                type: AÑADIR_TRABAJO,
+                payload: resolve.data
+            })
+        } catch (error) {
+            console.log(error)
+            
+        }
+       
 
     }
 

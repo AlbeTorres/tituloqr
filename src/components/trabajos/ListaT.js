@@ -27,7 +27,7 @@ function ListaT() {
        {
          (trabajosFilter.length!==0) ?
             
-         trabajosFilter.map(trabajo=>(<TrabajosCard key={trabajo.id} trabajo={trabajo}/>))
+         trabajosFilter.map(trabajo=>(<TrabajosCard key={trabajo._id} trabajo={trabajo}/>))
         :
         <h1>No hay trabajos</h1>
             }

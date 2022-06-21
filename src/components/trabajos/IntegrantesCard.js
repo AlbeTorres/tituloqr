@@ -6,7 +6,7 @@ function IntegrantesCard({participante}) {
   const trabajoAuxContext = useContext(trabajosContext);
   const {eliminarIntegrantes, trabajoM}= trabajoAuxContext;
 
-    const{id,nombre,categoria}= participante;
+    const{_id,nombre,categoria}= participante;
 
     const eliminarIntegrantesID=(id)=>{
       eliminarIntegrantes(id)
@@ -27,7 +27,7 @@ function IntegrantesCard({participante}) {
             <p className='text-white text-sm'>{categoria}</p>
           </div>
           <div>
-            <button onClick={()=>eliminarIntegrantesID(id) } className='mr-2 px-2 text-white bg-red-700 rounded-sm shadow-md text-sm'>Eliminar</button>
+            <button onClick={()=>eliminarIntegrantesID(_id) } className='mr-2 px-2 text-white bg-red-700 rounded-sm shadow-md text-sm'>Eliminar</button>
           </div>
         </div>
     </div>

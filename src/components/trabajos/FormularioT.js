@@ -9,14 +9,14 @@ function FormularioT({añadir}) {
 
     
     let idM=''
-    let nombreM= '';
+    let tituloM= '';
     let integrantesM= [];
 
      //Si se usa el componente como modificar colocar en el estado los valores anteriores del participante
     if(!añadir){
 
     idM= trabajoM[0].id;
-    nombreM = trabajoM[0].nombre ;
+    tituloM = trabajoM[0].titulo ;
 }
     integrantesM =trabajoM[0].integrantes;
 
@@ -25,21 +25,21 @@ function FormularioT({añadir}) {
 
 
     const [trabajo, guardarTrabajo]= useState({
-        nombre: nombreM,
+        titulo: tituloM,
         integrantes: integrantesM,
 
     });
 
     useEffect(()=>{
         guardarTrabajo({
-            nombre: nombreM,
+            titulo: tituloM,
             integrantes: integrantesM,
     
         });
 
     },[trabajoM])
 
-    const {nombre}= trabajo;
+    const {titulo}= trabajo;
 
     const onChangeTrabajo=e=>{
         guardarTrabajo({
@@ -73,7 +73,7 @@ function FormularioT({añadir}) {
         e.preventDefault();
     
         //Validar form
-        if( nombre==''){
+        if( titulo==''){
             return;
         }
     
@@ -113,8 +113,8 @@ function FormularioT({añadir}) {
                 <label className={añadir ? 'block text-white':'block'}>Título del Trabajo:</label>
                 <input className= {añadir ? 'w-80 p-2 mt-2 border-2 border-white shadow-lg rounded-sm':'w-full p-2  mt-2 border-2 shadow-lg rounded-sm border-blue-800'}
                     placeholder='Escribe el título del trabajo'
-                    name="nombre"
-                    value={nombre}
+                    name="titulo"
+                    value={titulo}
                     type='text'
                     onChange={onChangeTrabajo}
                 /> 

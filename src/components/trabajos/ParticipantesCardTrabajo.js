@@ -6,10 +6,10 @@ function ParticipantesCardTrabajo({participante}) {
   const trabajosAuxContext= useContext(trabajosContext);
   const {vincularIntegrantes,añadirIntegrantes}= trabajosAuxContext;
 
-  const {id,nombre, categoria} = participante;
+  const {_id,nombre, categoria} = participante;
 
   const añadirIntegrantesT =()=>{
-    añadirIntegrantes(id);
+    añadirIntegrantes(_id);
     vincularIntegrantes();
 
   }

@@ -22,13 +22,13 @@ export default (state, action)=>{
             return {
                 ...state,
                 modificar:true,
-                trabajoM: state.trabajos.filter(trabajo=>trabajo.id===action.payload)
+                trabajoM: state.trabajos.filter(trabajo=>trabajo._id===action.payload)
             };
         case CERRAR_MODIFICAR:
             return {
                 ...state,
                 modificar:false,
-                trabajoM: [{id:'', nombre:'', integrantes:[]}]
+                trabajoM: [{_id:'', nombre:'', integrantes:[]}]
                 
             };
         case ABRIR_SELECCIONAR:
@@ -62,7 +62,7 @@ export default (state, action)=>{
         case ELIMINAR_TRABAJOS:
             return{
                 ...state,
-                trabajos: state.trabajos.filter(trabajo=> trabajo.id !==action.payload )
+                trabajos: state.trabajos.filter(trabajo=> trabajo._id !==action.payload )
             };
         case ELIMINAR_INTEGRANTES:
             return{
@@ -72,7 +72,7 @@ export default (state, action)=>{
         case VACIAR_INTEGRANTES:
             return{
                 ...state,
-                trabajoM: [{id:'', nombre:'', integrantes:[]}],
+                trabajoM: [{_id:'', nombre:'', integrantes:[]}],
             };
         case AÑADIR_TRABAJO:
             return{
@@ -83,7 +83,7 @@ export default (state, action)=>{
             return{
                 ...state,
                 trabajos:state.trabajos.map(trabajo=>{
-                    return trabajo.id== action.payload.id ? (trabajo= action.payload): trabajo;
+                    return trabajo._id== action.payload.id ? (trabajo= action.payload): trabajo;
                 })
             }
 
