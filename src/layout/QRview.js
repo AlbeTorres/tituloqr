@@ -1,10 +1,10 @@
-import React,{useContext} from 'react';
+import React,{useContext, useRef} from 'react';
 import { Link } from 'react-router-dom';
 import BuscarP from '../components/participantes/BuscarP';
 import ListaQR from '../components/trabajos/ListaQR';
 import QRCode from "react-qr-code";
 import trabajosContext from '../context/trabajos/trabajosContext';
-
+import exportAsImage from '../utils/importASImagen';
 
 
   
@@ -14,7 +14,7 @@ function QRview() {
     const trabajoAuxContext= useContext(trabajosContext);
     const {trabajoID}= trabajoAuxContext;
 
-  
+    const exportRef = useRef();
 
   return (
     <div className='grid grid-cols-3 w-full'>
@@ -36,12 +36,12 @@ function QRview() {
             </figure> :
                 
             <div>
-                <figure className='w-64 h-64 bg-white rounded-md shadow-sm'>
+                <figure className='w-64 h-64 bg-white rounded-md shadow-sm' ref={exportRef}>
                 
-                <QRCode className='w-full h-full rounded-md shadow-sm' value={`http://localhost:3000/diploma${trabajoID}`} />
+                    <QRCode className='w-full h-full rounded-md shadow-sm' value={`http://localhost:3000/diploma${trabajoID}`} />
                 </figure>
                 <div className='flex justify-center mt-2'>
-                    <button className='bg-white rounded-sm p-2 m-1 text-blue-800 border-blue-800 shadow-sm '>Generar</button>
+                    <button className='bg-white rounded-sm p-2 m-1 text-blue-800 border-blue-800 shadow-sm ' onClick={() => exportAsImage(exportRef.current, trabajoID)}>Generar</button>
                     <Link to={`/diploma${trabajoID} `} className='bg-white rounded-sm p-2 m-1 text-blue-800 border-blue-800 shadow-sm '>Acceder</Link>
                 </div>
             </div> }
