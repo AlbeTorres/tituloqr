@@ -29,7 +29,7 @@ function ListaQR() {
        {
          (trabajosFilter.length!==0) ?
             
-         trabajosFilter.map(trabajo=>(<TrabajoCardQR key={trabajo.id} trabajo={trabajo}/>))
+         trabajosFilter.map(trabajo=>(<TrabajoCardQR key={trabajo._id} trabajo={trabajo}/>))
         :
         <h1>No hay trabajos</h1>
             }

@@ -41,4 +41,5 @@ export const CERRAR_SESION= 'CERRAR_SESION';
 
 
 
+export const TRABAJO_ID= 'TRABAJO_ID';
 

@@ -9,6 +9,7 @@ ELIMINAR_TRABAJOS,
 AÑADIR_TRABAJO,
 MODIFICAR_TRABAJO,
 VACIAR_INTEGRANTES,
+TRABAJO_ID,
 } from "../../types";
 import trabajosContext from './trabajosContext';
 import {v4 as uuid4} from 'uuid';
@@ -26,12 +27,22 @@ const TrabajosState = props =>{
         busquedaT:'',
         trabajoM:[{id:'', titulo:'', integrantes:[]}],
         integrantes:[],
+        trabajoID: null,
         
 
     }
 
     //Dispatch para ejecutar las acciones
     const [state, dispatch]= useReducer(trabajosReducer,initialState)
+
+    //Guardar Trabajo id
+    const guardarTrabajoID= (id)=>{
+
+        dispatch({
+            type: TRABAJO_ID,
+            payload:id
+        });
+    }
 
      //Abrir modificar
     const abrirModificar=(id)=>{
@@ -201,6 +212,7 @@ const TrabajosState = props =>{
                 busquedaT:state.busquedaT,
                 trabajoM:state.trabajoM,
                 integrantes: state.integrantes,
+                trabajoID: state.trabajoID,
                 obtenerTrabajos,
                 abrirModificar,
                 cerrarModificar,
@@ -214,6 +226,7 @@ const TrabajosState = props =>{
                 añadirTrabajo,
                 modificarTrabajo,
                 vaciarIntegrantes,
+                guardarTrabajoID,
             }}
         >
             {props.children}

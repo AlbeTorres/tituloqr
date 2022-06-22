@@ -23,13 +23,13 @@ function Diploma() {
 
     
 
-        const trabajoDiploma = trabajos.filter( trabajo => trabajo.id == params.id );
+        const trabajoDiploma = trabajos.filter( trabajo => trabajo._id == params.id );
     
         
         
         if(trabajoDiploma.length ){
-            nombre = trabajoDiploma[0].nombre
-            participantesAUX = participantes.filter(participante=> trabajoDiploma[0].integrantes.includes(participante.id))
+            nombre = trabajoDiploma[0].titulo
+            participantesAUX = participantes.filter(participante=> trabajoDiploma[0].integrantes.includes(participante._id))
 
             console.log(trabajoDiploma[0].integrantes)
             console.log(participantesAUX)

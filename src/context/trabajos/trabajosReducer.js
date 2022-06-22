@@ -7,7 +7,8 @@ import { ABRIR_MODIFICAR,CERRAR_MODIFICAR, OBTENER_TRABAJOS, ABRIR_SELECCIONAR,
     ELIMINAR_INTEGRANTES,
     AÑADIR_TRABAJO,
     VACIAR_INTEGRANTES,
-    MODIFICAR_TRABAJO} from "../../types";
+    MODIFICAR_TRABAJO,
+    TRABAJO_ID,} from "../../types";
 
 
 export default (state, action)=>{
@@ -85,8 +86,13 @@ export default (state, action)=>{
                 trabajos:state.trabajos.map(trabajo=>{
                     return trabajo._id== action.payload._id ? (trabajo= action.payload): trabajo;
                 })
-            }
+            };
 
+        case TRABAJO_ID:
+            return{
+                ...state,
+                trabajoID: action.payload
+            }
         default:
             return state;
     }
