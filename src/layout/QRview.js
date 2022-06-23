@@ -5,6 +5,7 @@ import ListaQR from '../components/trabajos/ListaQR';
 import QRCode from "react-qr-code";
 import trabajosContext from '../context/trabajos/trabajosContext';
 import exportAsImage from '../utils/importASImagen';
+import '../index.css'
 
 
   
@@ -36,9 +37,13 @@ function QRview() {
             </figure> :
                 
             <div>
-                <figure className='w-64 h-64 bg-white rounded-md shadow-sm' ref={exportRef}>
-                
-                    <QRCode className='w-full h-full rounded-md shadow-sm' value={`http://localhost:3000/diploma${trabajoID}`} />
+                <figure className='w-80 h-80 rounded-md shadow-sm qr flex items-center justify-center'  ref={exportRef}>
+                <div className='w-64 h-64 flex items-center justify-center flex-col rounded-md shadow-sm bg-white'>
+                     <h3 className='text-center  mb-1 p-1 text-lg font-bold '>Certificado</h3> 
+                    <QRCode className='' size={150} value={`http://localhost:3000/diploma${trabajoID}`} />
+                    <h3 className='text-center mt-1 p-1 text-lg font-bold  '>Universidad de Artemisa</h3> 
+
+                </div>
                 </figure>
                 <div className='flex justify-center mt-2'>
                     <button className='bg-white rounded-sm p-2 m-1 text-blue-800 border-blue-800 shadow-sm ' onClick={() => exportAsImage(exportRef.current, trabajoID)}>Generar</button>

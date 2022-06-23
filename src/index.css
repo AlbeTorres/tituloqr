@@ -34,3 +34,9 @@
 .fine{
     @apply bg-green-600 rounded-lg
 }
+
+.qr{
+    background-image: url(../public/universidad.jpg);
+    background-position: bottom;
+    background-size: cover;
+}
