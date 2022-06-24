@@ -40,3 +40,20 @@
     background-position: bottom;
     background-size: cover;
 }
+
+.diploma-text{
+    font-size: 2rem;
+    
+}
+
+.integrantes{
+    grid-template-columns: 50%  50%;
+}
+
+.integrantes-text{
+    font-size: 0.6rem;
+}
+
+.tablet{
+    @apply sm:max-w-sm
+}

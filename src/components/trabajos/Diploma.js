@@ -2,6 +2,7 @@ import React,{useContext, useEffect} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import trabajosContext from '../../context/trabajos/trabajosContext';
 import participantesContext from '../../context/participantes/participantesContext';
+import '../../index.css'
 
 function Diploma() {
 
@@ -37,38 +38,44 @@ function Diploma() {
    
 
     return (
-    <div className='absolute w-screen h-screen bg-white '>
+    <div className='absolute w-screen h-screen bg-gray-50 '>
 
-        <Link to={'/qr'} className=' bg-blue-800 rounded-sm p-2 shadow-md text-white m-2'>Regresar</Link>
 
-        <div className='bg-gray-50 shadow-lg max-w-sm m-auto h-5/6 relative border-2 border-red-700'>
-            <div className=' flex flex-col items-center justify-evenly '>
+        <div className='relative flex items-center justify-center h-screen w-screen'>
 
-                <div className='flex flex-col items-center'>
-                    <figure className='w-10 h-10 mt-4'>
-                        <img className='w-full h-full rounded-md shadow-sm' src='escudo_artemisa.png'/>
-                    </figure>
-                    <h2 className='font-semibold mt-2'>Título:</h2>
-                    <h1 className='text-center font-bold m-6 text-2xl '>{nombre}</h1>
+            <div className='bg-white shadow-lg  relative border-2 h-max w-screen mx-2 p-1 tablet '>
+
+                <div className='border-4 border-yellow-200 '>
+
+                        <div className=' flex flex-col items-center justify-evenly '>
+
+                            <div className='flex flex-col items-center h-28 mt-2 '>
+                                {/* <figure className='w-10 h-10 mt-4'>
+                                    <img className='w-full h-full rounded-md shadow-sm' src='escudo_artemisa.png'/>
+                                </figure> */}
+                                <p className='text-xs pt-1 font-extralight  '>Certificado Por la Universidad de Artemisa</p>
+                                <h2 className='  diploma-text '>Diploma</h2>
+                                <h1 className='text-center italic'>{nombre}</h1>
+                            </div>
+
+                            <div className='grid integrantes justify-center items-center w-full h-20  ' >
+                                <div className='m-auto'>
+                                    <h2 className='text-xs text-center pt-1 font-extralight'>Integrantes:</h2>
+                                    { participantesAUX.map( participante=>(<p className='text-center integrantes-text'>{participante.nombre}</p>))}
+                                </div>
+
+                                <figure className='w-10  h-12 mx-auto  '>
+                                    <img className='w-full h-full  shadow-sm' src='Logo-UART.jpg'/>
+                                </figure>
+                                
+
+                            </div>
+
+                        </div>
                 </div>
-
-
-                <div className='flex items-center flex-col'>
-                    <h2 className='font-semibold mb-2'>Integrantes:</h2>
-                    { participantesAUX.map( participante=>(<h3 className='text-sm'>- {participante.nombre}</h3>))}
-                </div>
-
-                
-                <div className='flex flex-col items-center absolute bottom-2  m-4'>
-                    
-                    <p className='m-2 text-xs'>Validado por la Universidad de Artemisa</p>
-                    <figure className='w-11  h-16 '>
-                        <img className='w-full h-full  shadow-sm' src='Logo-UART.jpg'/>
-                    </figure>
-                </div>
-
             </div>
         </div>
+            <Link to={'/qr'} className=' bg-white rounded-sm p-1 shadow-md text-blue-800 m-2 absolute bottom-4 right-2'>Regresar</Link>
     </div>
     )
 }
