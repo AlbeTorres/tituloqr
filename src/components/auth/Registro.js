@@ -1,6 +1,6 @@
 import React,{useState, useContext, useEffect} from 'react';
 import {FaUserAlt,FaUnlock, FaEnvelope} from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AlertaContext from '../../context/alertas/alertasContext';
 import '../../index.css'
 import authContext from '../../context/auth/authContext';
@@ -20,9 +20,9 @@ const Registro = () => {
 
   useEffect(()=>{
 
-    if (autenticado){
-      history('/home');
-    }
+    // if (autenticado){
+    //   history('/home');
+    // }
 
     if(mensaje){
       mostrarAlerta(mensaje.msg, mensaje.categoria);
@@ -55,6 +55,7 @@ const onChangeCheckBox=e=>{
   })
 }
 
+  
 
   const onSubmit=e =>{
     e.preventDefault()
@@ -83,6 +84,8 @@ const onChangeCheckBox=e=>{
     }
 
     registrarUsuario({nombre, password, email, isAdmin});
+
+    // mostrarAlerta('Usuario registrado correctamente', 'fine')
 
   }
 
@@ -153,7 +156,7 @@ const onChangeCheckBox=e=>{
                 </label>
 
                 <input className='w-full bg-white p-2 mt-12 text-blue-800 rounded-sm cursor-pointer ' type={'submit'} value={'Acceder'}  />
-                <input className='w-full bg-red-700 p-2 mt-2 text-white rounded-sm cursor-pointer ' type={'submit'} value={'Cancelar'}  />
+                <Link to={'/home'} className='w-full bg-red-700 p-2 mt-2 text-white rounded-sm cursor-pointer text-center'  >Volver</Link>
             </form>
 
         </div>

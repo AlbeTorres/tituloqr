@@ -38,7 +38,7 @@ function Diploma() {
    
 
     return (
-    <div className='absolute w-screen h-screen bg-gray-50 '>
+    <div className='absolute w-screen h-screen bg-gray-50 qr '>
 
 
         <div className='relative flex items-center justify-center h-screen w-screen'>
@@ -54,7 +54,7 @@ function Diploma() {
                                     <img className='w-full h-full rounded-md shadow-sm' src='escudo_artemisa.png'/>
                                 </figure> */}
                                 <p className='text-xs pt-1 font-extralight  '>Certificado Por la Universidad de Artemisa</p>
-                                <h2 className='  diploma-text '>Diploma</h2>
+                                <h2 className='  diploma-text  '>Diploma</h2>
                                 <h1 className='text-center italic'>{nombre}</h1>
                             </div>
 

@@ -39,10 +39,12 @@
     background-image: url(../public/universidad.jpg);
     background-position: bottom;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .diploma-text{
     font-size: 2rem;
+    
     
 }
 
@@ -55,5 +57,5 @@
 }
 
 .tablet{
-    @apply sm:max-w-sm
+    @apply sm:max-w-sm md:max-w-md lg:max-w-lg
 }

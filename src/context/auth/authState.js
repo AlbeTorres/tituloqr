@@ -27,7 +27,7 @@ import tokenAuth from "../../config/tokenAuth";
 
                 const response = await clienteAxios.post('api/usuarios/', datos);
 
-                localStorage.setItem('token', response.data.token)
+                // localStorage.setItem('token', response.data.token)
 
                 dispatch({
                     type: REGISTRO_EXITOSO,
